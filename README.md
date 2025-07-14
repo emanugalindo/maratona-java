@@ -12,14 +12,14 @@ Repositório dedicado aos estudos de Java, seguindo o curso [Maratona Java](http
 - Estruturas Condicionais: if, else, switch
 - Estruturas de Repetição: for, while, do-while
 - Arrays e Arrays Multidimensionais
-- POO: Introdução classes, coesão e referência de objetos
+- POO: Introdução classes, coesão e referência de objetos, métodos, construtores, blocos de inicialização, modificador estático, associação, herança, sobrescrita, modificador final, enum, classes abstratas.
 
 ### 🚧 Em Andamento
-- POO: Métodos
+- POO: Interfaces
 
 ---
 
-## 📚 Anotações Técnicas
+## 📚 Anotações
 ### 🔹 Tipos Primitivos
 - São oito tipos primitivos. Sendo eles:  **int, double, float, char, byte, short, long, boolean**;
 - No **char** também é possível colocar número. Se, você colocar um número ele é traduzido para a tabela ASCII. Pode também usar a tabela **unicode**. Basta colocar '\u+valor'.

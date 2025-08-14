@@ -237,6 +237,25 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
 - **Wrappers: Byte, Short, Integer, Long, Float, Double, Character, Boolean;**
 - **Autoboxing** é quando você tem um tipo primitivo e você faz o Java transformar ele em **Wrapper**;
 - **Unboxing** é quando o Java transforma o Wrapper em tipo primitivo;
+
+### 🔹 Strings
+- No Java, **Strings** são imutáveis. A não ser que você faça uma nova associação, você não pode trocar o valor que existe;
+- As Strings quando são criadas pela primeira vez, ficam na **String constant pool**;
+- Para se comparar se referências de Strings apontam para o mesmo objeto, usa-se **==**;
+- **.concat():** usa-se para concatenar Strings;
+- Quando você cria uma String usando **new String()**, você cria: 1 - variável de referência, 2 - objeto do tipo string, 3 - uma string no pool de string;
+    - Se quisermos pegar o valor de referência do pool de string, usamos **.intern();
+- **.lenght():** mostra o tamanho da String;
+- **replace("letra_a_ser_trocada", "letra_nova"):** troca todas as ocorrências da letra informada por outra letra informada;
+- **.substring(posicao_inicial, posicao_final):** retorna a string a partir do índice inicial até um índice a menos do que o índice final informado;
+    - Se você usar de uma posição até o final da string, não é preciso informar o índice final;
+- **.trim():** remove os espaços em branco do começo e do fim da string;
+- **StringBuffer e StringBuilder** são utilizados para melhorar o desempenho de Strings;
+    - **append(concatenar_com_string):** concatena a string;
+    - **StringBuilder** não é imutável;
+    - Quando você cria uma **StringBuilder/StringBuffer**, você pode passar uma string, uma sequência de caracteres ou a capacidade dela. Se você não passar nada é criada uma com **16 caracteres**, e caso você passe do tamanho ele é dobrado;
+    - **.reverse():** inverte a StringBuilder;
+    - **.delete(inicio, fim):** deleta as posições a partir da inicial até a anterior da final informada.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

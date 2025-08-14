@@ -230,6 +230,13 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
     - Você pode lançar qualquer exceção Unchecked;
     - Você não pode declarar uma exceção mais genérica do que a do tipo original, porém se no método original tiver uma mais genérica você pode colocar as classes filhas;
     - Você não pode colocar uma exceção do tipo **Checked** que não foi declara no método original;
+
+### 🔹 Wrappers
+-  São objetos que irão encapsular os tipos primitivos;
+- Para criar um **Wrapper**, você coloca o nome do tipo primitivo em maiúscula. Com exceção do **int** e do **char**;
+- **Wrappers: Byte, Short, Integer, Long, Float, Double, Character, Boolean;**
+- **Autoboxing** é quando você tem um tipo primitivo e você faz o Java transformar ele em **Wrapper**;
+- **Unboxing** é quando o Java transforma o Wrapper em tipo primitivo;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

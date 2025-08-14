@@ -13,6 +13,7 @@ Repositório dedicado aos estudos de Java, seguindo o curso [Maratona Java](http
 - Estruturas de Repetição: for, while, do-while
 - Arrays e Arrays Multidimensionais
 - POO
+- Exceções
 
 ## 📚 Anotações
 ### 🔹 Tipos Primitivos
@@ -184,6 +185,51 @@ public enum TipoCliente {
 #### Polimorfismo
 - É a capacidade de um objeto ser tratado como uma instância de sua própria classe ou de suas classes pai (superclasses);
 - Com o polimorfismo podemos ter a variável de referência de um tipo e o objeto de outro. Isso só é aplicado na **herança**;
+
+### 🔹 Exceções
+- **Exceção** é um evento que ocorre durante a execução de um programa e interrompe o fluxo normal de execução;
+- **Exceções do tipo Checked**, são exceções que são filhas da classe **Exception** diretamente. Se não tratadas, vão lançar um erro em tempo de compilação;
+- **Exceções do tipo Unchecked**, são exceções filhas ou a classe **RuntimeException**. Você não precisa fazer validação para o seu código compilar;
+- **Exemplo de tratamento de exceção**:
+```
+File file = new File("arquivo/teste.txt");  
+try {  
+    boolean isCriado = file.createNewFile();  
+    System.out.println("Arquivo criado " + isCriado);  
+} catch (IOException e) {  
+    e.printStackTrace();
+}
+```
+- A **StackTrace** mostra no console tudo o que ocorreu;
+- **IllegalArgumentException:** exceção de argumento ilegal ou inapropriado;
+- Quando trabalhamos com exceções **Checked** é necessário colocar o **throws** na assinatura do método. **Ex:**
+```
+private static void talvezLanceException() throws SQLException, FileNotFoundException{  
+
+}
+```
+- **Finally:** sempre é executado, independente de ter uma exceção ou não;
+    - Recomendado quando é necessário fechar um recurso após o uso dele.
+- Você deve usar o **try + catch ou finally**;
+- Quando são utilizados diversos **catches**, não podemos colocar o tipo mais genérico da exceção na frente dos outros **catches**. Ele deve vir no final, pois se ele vier antes de outra exceção a referência do objeto vai ir direto para ele;
+- Você pode colocar exceções que não estão na mesma linha de herança dentro de um mesmo catch, se elas estiverem separadas por **|**. Você não pode fazer isso com classes na mesma linha de herança;
+- **Try with resources:** se encarrega de fechar a conexão da variável de referência.
+    - Você só pode colocar objetos/variáveis de referência dentro dele que implementem a interface **Closable ou Autoclosable**.
+    - Com ele, você pode deixar apenas o **try**, mas você precisa indicar a exceção do tipo **Checked** que está sendo lançada.
+    - Podemos colocar mais de um(a) objeto/variável e eles são fechados na ordem inversa que foram declarados.
+- **Ex:**
+```
+try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){  
+  
+}catch (IOException e){  
+  
+}
+```
+- Quando você está sobrescrevendo um método, você não é obrigado a declarar as mesmas exceções que aquele método está declarando. Pois, a funcionalidade da sobrescrita pode ser completamente diferente;
+    - Você pode lançar uma ou todas as exceções;
+    - Você pode lançar qualquer exceção Unchecked;
+    - Você não pode declarar uma exceção mais genérica do que a do tipo original, porém se no método original tiver uma mais genérica você pode colocar as classes filhas;
+    - Você não pode colocar uma exceção do tipo **Checked** que não foi declara no método original;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

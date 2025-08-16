@@ -256,6 +256,12 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
     - Quando você cria uma **StringBuilder/StringBuffer**, você pode passar uma string, uma sequência de caracteres ou a capacidade dela. Se você não passar nada é criada uma com **16 caracteres**, e caso você passe do tamanho ele é dobrado;
     - **.reverse():** inverte a StringBuilder;
     - **.delete(inicio, fim):** deleta as posições a partir da inicial até a anterior da final informada.
+
+### 🔹 Date
+- Usada em sistemas legados;
+- Trabalha em milissegundos;
+- O valor que tem dentro dela é um **long** representando os milissegundos desde de **01/01/1970**;
+- **.getTime():** retorna um long que representa a data;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

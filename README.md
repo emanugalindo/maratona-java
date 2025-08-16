@@ -262,6 +262,12 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
 - Trabalha em milissegundos;
 - O valor que tem dentro dela é um **long** representando os milissegundos desde de **01/01/1970**;
 - **.getTime():** retorna um long que representa a data;
+
+### 🔹 Calendar
+- É uma classe abstrata;
+- Instância: ```Calendar nome = Calendar.getInstance();```;
+- **.add(valor_para_adicionar, quantidade):** adiciona um valor de hora, ou ano ao atual;
+- **.roll(valor_para_adicionar, quantidade):** adicionar um valor, mas se passar do limite de ano ou dia, adiciona e mantém ele.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

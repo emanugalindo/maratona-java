@@ -268,6 +268,21 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
 - Instância: ```Calendar nome = Calendar.getInstance();```;
 - **.add(valor_para_adicionar, quantidade):** adiciona um valor de hora, ou ano ao atual;
 - **.roll(valor_para_adicionar, quantidade):** adicionar um valor, mas se passar do limite de ano ou dia, adiciona e mantém ele.
+
+### 🔹 DateFormat
+- Usada para formatar datas;
+- É abstrata;
+- **Instância:** ```DateFormat[] nome = new DateFormat[tamanho];```;
+- Exemplos de formatações:
+```
+df[0] = DateFormat.getInstance();  
+df[1] = DateFormat.getDateInstance();  
+df[2] = DateFormat.getDateTimeInstance();  
+df[3] = DateFormat.getDateInstance(DateFormat.SHORT);  
+df[4] = DateFormat.getDateInstance(DateFormat.MEDIUM);  
+df[5] = DateFormat.getDateInstance(DateFormat.LONG);  
+df[6] = DateFormat.getDateInstance(DateFormat.FULL);
+```
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

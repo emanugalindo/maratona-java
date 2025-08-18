@@ -309,6 +309,26 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Pode-se passar uma **máscara** para definir o formato de exibição. **Ex:** ```SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 - Usa-se **'** quando é necessário que o que está dentro das aspas simples seja ignorado;
 - Com o **parse** é necessário seguir a representação informada.
+
+### 🔹 LocalDate
+- Trabalha apenas com a data;
+- Exibe a data igual ela é salva no banco de dados;
+- Ela é imutável;
+- Quando ela é instanciada, pode ser com **.of(), .now() ou .parse()**;
+- **isLeapYear():** retorna se o ano é bissexto ou não;
+- **.atTime(LocalTime):** faz a junção de uma LocalDate com uma LocalTime.
+
+### 🔹 LocalTime
+- Trabalha apenas com hora;
+- Pode ser instanciada com **.of(), .now() ou .parse()**;
+- Vai de 0 até 23 horas;
+- **LocalTime.MIN:** mostra a hora mínima(00:00);
+- **LocalTime.MAX:** mostra a hora máxima(23:59:59);
+- **.atDate(LocalDate):** faz a junção de uma LocalTime com uma LocalDate.
+
+### 🔹 LocalDateTime
+- Trabalha com data e hora;
+- Pode ser instanciado com **.now(), .of() ou .parse()**;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

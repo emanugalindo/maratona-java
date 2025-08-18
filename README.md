@@ -265,14 +265,14 @@ try(Reader reader = new BufferedReader(new FileReader("teste.txt"))){
 
 ### 🔹 Calendar
 - É uma classe abstrata;
-- Instância: ```Calendar nome = Calendar.getInstance();```;
+- Instância: ```Calendar nome = Calendar.getInstance();```
 - **.add(valor_para_adicionar, quantidade):** adiciona um valor de hora, ou ano ao atual;
 - **.roll(valor_para_adicionar, quantidade):** adicionar um valor, mas se passar do limite de ano ou dia, adiciona e mantém ele.
 
 ### 🔹 DateFormat
 - Usada para formatar datas;
 - É abstrata;
-- **Instância:** ```DateFormat[] nome = new DateFormat[tamanho];```;
+- **Instância:** ```DateFormat[] nome = new DateFormat[tamanho];```
 - Exemplos de formatações:
 ```
 df[0] = DateFormat.getInstance();  
@@ -283,6 +283,26 @@ df[4] = DateFormat.getDateInstance(DateFormat.MEDIUM);
 df[5] = DateFormat.getDateInstance(DateFormat.LONG);  
 df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 ```
+
+### 🔹 Locale
+- Foi criada para trabalhar com internacionalização;
+- Usada para formatar datas, moedas e números baseado na preferência do usuário ou na localização da **JVM** dele;
+- Ele utiliza duas ISOs, língua e país;
+- **Ex:** ```Locale nome = new Locale("língua", "país");```
+- **.getDisplayCountry()/.getDisplayCountry(país):** mostra o nome de um determinado país com base no país do usuário ou de um informado;
+- **.getDefault():** mostra como está configurado o país e idioma do seu computador;
+- **.getISOCountries():** exibe a lista de países suportados;
+- **.getISOLanguages():** exibe a lista de línguas suportadas;
+
+### 🔹 NumberFormat
+- É abstrata;
+- **Instância:** ```NumberFormat.getInstace();```
+    - Para moedas: ```NumberFormat.getCurrencyInstace();```
+- .**getMaximumFractionDigits():** mostra a quantidade máxima de casas decimais;
+- **.getMaximumIntegerDigits():** mostra a quantidade máxima de inteiros;
+- **.setMaximumFractionDigits(quantidade):** define a quantidade máxima de casas decimais.
+- **.parse():** converte o valor da String para a representação informada;
+    - Para moedas, é necessário colocar com o símbolo da moeda.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

@@ -303,6 +303,12 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - **.setMaximumFractionDigits(quantidade):** define a quantidade máxima de casas decimais.
 - **.parse():** converte o valor da String para a representação informada;
     - Para moedas, é necessário colocar com o símbolo da moeda.
+
+### 🔹 SimpleDateFormat
+- Com ela, pode-se formatar de diversas formas;
+- Pode-se passar uma **máscara** para definir o formato de exibição. **Ex:** ```SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+- Usa-se **'** quando é necessário que o que está dentro das aspas simples seja ignorado;
+- Com o **parse** é necessário seguir a representação informada.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

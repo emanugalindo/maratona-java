@@ -329,6 +329,11 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 ### 🔹 LocalDateTime
 - Trabalha com data e hora;
 - Pode ser instanciado com **.now(), .of() ou .parse()**;
+
+### 🔹 Instant
+- Trabalha com nanossegundos, guarda eles de 1970 até agora;
+- Os objetos criados são imutáveis;
+- **.ofEpochSecond(epochSecond)/.ofEpochSecond(epochSecond, nanoAdjustment):** mostra o segundo informado, podendo ou não adicionar nanossegundos para aumentá-lo ou diminuí-lo;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

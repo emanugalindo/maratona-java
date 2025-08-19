@@ -334,6 +334,13 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Trabalha com nanossegundos, guarda eles de 1970 até agora;
 - Os objetos criados são imutáveis;
 - **.ofEpochSecond(epochSecond)/.ofEpochSecond(epochSecond, nanoAdjustment):** mostra o segundo informado, podendo ou não adicionar nanossegundos para aumentá-lo ou diminuí-lo;
+
+### 🔹 Duration
+- Criada para trabalhar com a quantidade de tempo;
+- Geralmente é utilizada quando é necessário pegar o intervalo entre duas datas;
+- Baseada em segundos e nanossegundos;
+- **.between():** exibe a diferença entre datas ou horas diferentes;
+- Retorna em horas;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

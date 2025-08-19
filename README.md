@@ -341,6 +341,11 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Baseada em segundos e nanossegundos;
 - **.between():** exibe a diferença entre datas ou horas diferentes;
 - Retorna em horas;
+
+### 🔹 Period
+- Baseada na data;
+- Trabalha com dias, meses e anos;
+- **.between(LocalDate dt1, LocalDate dt2):** retorna o período entre duas LocalDate;
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

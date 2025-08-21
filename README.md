@@ -346,6 +346,41 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Baseada na data;
 - Trabalha com dias, meses e anos;
 - **.between(LocalDate dt1, LocalDate dt2):** retorna o período entre duas LocalDate;
+
+### 🔹 Regex
+- É uma linguagem que utiliza metacaracteres;
+- Encontra padrões em um texto;
+- Também é usada para validações;
+- **Pattern:** padrão a ser encontrado;
+- **Matcher:** compara o Pattern com o texto;
+- **Pattern.compile(regex):** guarda o padrão;
+- **Pattern.matcher(texto):** compara o texto com o padrão guardado;
+- **Matcher.find():** encontra as ocorrências do padrão;
+- **Matcher.start():** retorna o **índice** referente ao começo da ocorrência;
+    - Os elementos encontrados são descartados para novas ocorrências. Então, se houver uma nova e algum deles fizer parte, ela não é exibida.
+- **Matcher.group():** exibe a ocorrência encontrada.
+- **\d :** Todos os dígitos;
+- **\D :** Tudo o que não for dígito ;
+- **\s :** Espaços em branco **\t \n \f \r** ;
+- **\S :** Todos os caracteres excluindo os brancos;
+- **\w :**  a-Z A-z, dígitos, _ ;
+- **\W :** Tudo o que não for incluso no \w;
+- **[]**: range, o que está dentro dele irá ser buscado;
+    - **a-z:** são buscados os caracteres de a até z **minúsculos**;
+    - **A-z:** são são buscados os caracteres de a até z **maiúsculos**;
+
+#### Quantificadores
+- São caracteres em que você pode pegar  determinada expressão baseada na quantidade que o metacaractere representa;
+- **? :** Zero ou uma;
+* * : zero ou mais;
++ **+:** uma ou mais;
+- **{n,m} :** de n até m;
+- **():** agrupamento;
+- **|:** para ou;
+- **$:** fim da linha;
+- **.(coringa):** corresponde a qualquer caractere único, exceto quebra de linha;
+- **^**: encontra exatamente aquilo que você quer no começo da linha;
+    - Se utilizarmos ele com o **Range**, ele funciona como negação.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

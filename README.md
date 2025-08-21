@@ -107,6 +107,8 @@ return num1 / num2;
 - .next() lê apenas a primeira palavra. Já, o .nextLine() lê tudo;
 - Para usar com char devemos utilizar o nome do scanner + charAt(posição).
   - **Ex: entrada.next().charAt(0);
+- Ela tem como delimitador padrão o espaço em branco;
+- **.useDelimiter("delimitador"):** define um delimitador para ser utilizado ao invés do delimitador padrão.
 
 #### Super
 - Utiliza-se para acessar métodos de super classes em que você quer utilizá-lo com alguma adição, sem ter que fazer uma Sobrecarga dele;

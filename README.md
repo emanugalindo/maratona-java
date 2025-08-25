@@ -383,6 +383,18 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - **.(coringa):** corresponde a qualquer caractere único, exceto quebra de linha;
 - **^**: encontra exatamente aquilo que você quer no começo da linha;
     - Se utilizarmos ele com o **Range**, ele funciona como negação.
+
+### 🔹 File
+- **File.createNewFile():** cria um arquivo;
+    - Se ele já estiver sido criado, não é criado outro com o mesmo nome.
+- **File.delete():** apaga um arquivo;
+- **File.exists():** verifica se um arquivo existe;
+- **File.getPath():** retorna o nome do arquivo;
+-  **File.getAbsolutePath():** retorna o caminho absoluto do arquivo;
+- **File.isDirectory():** retorna se ele é um diretório ou não;
+-  **File.isFIile():** retorna se ele é um arquivo ou não;
+- **File.isHidden():** mostra se ele está oculto;
+- **File.lastModified():** mostra a última vez que ele foi modificado.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

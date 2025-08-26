@@ -406,6 +406,16 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Usado para ler arquivos;
 - **FileReader.read():** retorna o número de caracteres lidos. Quando você não usa o array nele, é retornado o valor decimal do caractere;
     - Você pode pegar todo o conteúdo do arquivo com ele.
+
+### 🔹 BufferedWriter
+- Usado para escrita em um arquivo, mas pensando em performance;
+- Ela encapsula a **FileWriter**;
+- **BufferedWriter.newLine():** pula linha com base no SO;
+- É preciso fechar o recurso no SO.
+
+### 🔹 BufferedReader
+- Usado para ler um arquivo, mas pensando em performance;
+- **BufferedReader.readLine():** lê a linha(s) do arquivo.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

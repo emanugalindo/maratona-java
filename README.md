@@ -404,7 +404,7 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 
 ### 🔹 FileReader
 - Usado para ler arquivos;
-- **FileReader.read():** retorna o número do caractere na tabela ASC II;
+- **FileReader.read():** retorna o número de caracteres lidos. Quando você não usa o array nele, é retornado o valor decimal do caractere;
     - Você pode pegar todo o conteúdo do arquivo com ele.
 ---
 

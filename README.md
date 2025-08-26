@@ -395,6 +395,17 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 -  **File.isFIile():** retorna se ele é um arquivo ou não;
 - **File.isHidden():** mostra se ele está oculto;
 - **File.lastModified():** mostra a última vez que ele foi modificado.
+
+### 🔹 FileWriter
+- **File.write():** escreve no arquivo;
+- **File.flush():** força a escrita imediata de dados do buffer interno para o arquivo no disco, garantindo que nada seja perdido antes do **close()**;
+- Se quisermos que seja escrito continuando com o que está no arquivo devemos colocar **true** no construtor.
+    - **Ex: `FileWriter fw = new FileWriter(file, true);`
+
+### 🔹 FileReader
+- Usado para ler arquivos;
+- **FileReader.read():** retorna o número do caractere na tabela ASC II;
+    - Você pode pegar todo o conteúdo do arquivo com ele.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

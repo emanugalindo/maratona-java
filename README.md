@@ -416,6 +416,13 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 ### 🔹 BufferedReader
 - Usado para ler um arquivo, mas pensando em performance;
 - **BufferedReader.readLine():** lê a linha(s) do arquivo.
+
+### 🔹Serialização
+- **Serialização:** é pegar um  objeto e persistir ele em algum lugar usando o array de bytes;
+- Para um objeto ser serializado, é preciso implementar a classe **Serializable**;
+- Quando um objeto é deserializado, não é chamado o construtor;
+- Quando queremos que um campo seja ignorado na serialização, usa-se o termo **transient** nele;
+- Atributos **estáticos** não são serializados.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

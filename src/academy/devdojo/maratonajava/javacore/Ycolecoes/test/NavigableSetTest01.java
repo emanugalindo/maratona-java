@@ -28,10 +28,10 @@ public class NavigableSetTest01 {
         set.add(smartphone);
         NavigableSet<Manga> mangas = new TreeSet<>(new MangaPrecoComparator());
         mangas.add(new Manga(5L, "Hellsing Ultimate", 19.9, 0));
+        mangas.add(new Manga(2L, "HellSing Ultimate", 19.99, 0));
         mangas.add(new Manga(1L, "Berserk", 9.5, 5));
         mangas.add(new Manga(4L, "Pokemon", 3.2, 0));
         mangas.add(new Manga(3L, "Attack on titan", 11.20, 2));
-        mangas.add(new Manga(2L, "Dragon Ball Z", 2.99, 0));
         mangas.add(new Manga(2L, "Dragon Ball Z", 2.99, 0));
         mangas.add(new Manga(10L, "Aaragon", 2.99, 0));
 

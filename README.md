@@ -7,14 +7,6 @@ Repositório dedicado aos estudos de Java, seguindo o curso [Maratona Java](http
 
 ## 📌 Progresso Atual
 
-### ✅ Tópicos Concluídos
-- Fundamentos: variáveis, operadores, controle de fluxo
-- Estruturas Condicionais: if, else, switch
-- Estruturas de Repetição: for, while, do-while
-- Arrays e Arrays Multidimensionais
-- POO
-- Exceções
-
 ## 📚 Anotações
 ### 🔹 Tipos Primitivos
 - São oito tipos primitivos. Sendo eles:  **int, double, float, char, byte, short, long, boolean**;
@@ -423,6 +415,174 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Quando um objeto é deserializado, não é chamado o construtor;
 - Quando queremos que um campo seja ignorado na serialização, usa-se o termo **transient** nele;
 - Atributos **estáticos** não são serializados.
+
+### 🔹Equals
+- Quando ele compara Strings, se elas possuirem o mesmo conteúdo, elas são iguais. Pois, está sendo comparado os valores literais;
+- Quando se compara objetos, se a variável de referência não levar ao mesmo objeto, eles são diferentes;
+- **Regras:**
+  - **Reflexivo:** **x.equals(x)** tem que ser true para tudo que for diferente de **null**;
+  - **Simétrico:** para** x e y ** diferentes de **null**, se **x.equals(y) == true logo, y.equals(x) == true**;
+  - **Transitivo:** **para x, y, z** diferentes de **null**, s**e x.equals(y) == true, e x.equals(z) == true logo, y.equals(z) == true**;
+  - **Consistente: x.equals(x) sempre retorna true se x for diferente de null**;
+  - **Para x diferente de null, x.equals(null) tem que retornar false**;
+- Ele pode ser sobrescrito.
+
+### 🔹hashCode
+- **Hash** é um número que você gera para identificar um valor;
+- Um hash pode identificar mais de um valor, usa-se o **equals** para comparar;
+- Quando uma função tem **native** nela, significa que ela foi escrita em outra linguagem;
+- A classe **String** já tem o hashCode definido.
+- **Regras:**
+  - se **x.equals(y) == true, y.hashCode() == x.hashCode()**;
+  - **y.hashCode() == x.hashCode() não necessariamente o equals de y.equals(x) tem que ser true**;
+  - **x.equals(y) == false**
+  - **y.hashCode() != x.hashcCode(), x.equals(y) deverá ser false.**
+
+### 🔹List
+- Antes da adição dos **Generics** a lista poderia ter valores de diferentes tipos. Após ela colocou-se, `List<tipo> nome_lista``;
+- Ela é dinâmica;
+- Para adicionar um elemento usa-se **.add()**;
+  - No **ArrayList**, pode-se adicionar um elemento em uma posição específica **.add(indice, elemento)**;
+- Para pegar o tamanho de uma lista usa-se **.size()**;
+- Para acessar um índice específico usa-se **.get(indice)**;
+- Para criar uma lista deve-se usar **Wrapper**;
+- Para remover um elemento usa-se **.remove(objeto/indice)**;
+  - Na remoção pode se passado um **objeto ou índice**;
+- Pode-se adicionar todos os elementos de uma lista em outra lista, para isso usa-se **.addAll()**;
+- Para apagar todos os elementos de uma lista, usa-se **.clear()**;
+- Para comparar se um elemento está na lista, usa-se **.contains(elemento)**;
+  - Se ele não encontrar, retorna **-1**;
+- Para saber o índice de um elemento, usa-se **indexOf(elemento)**;
+- Para reordenar os elementos, usa-se **Collections.sort(lista);
+  - Para **Strings** é ordenado em ordem alfabética, para **int** é ordenado do menor para o maior.
+- Para  garantir que um atributo de um objeto não seja **null**, pode-se usar **Objects.requireNonNull(atributo, mensagem)**.
+- Para comparar objetos com mais de um atributo **implementa-se** a **interface** ```Comparable<classe>``` ;
+- Para a comparação usa-se **compareTo/compare**. Os wrappers já tenha a implementação dela, para eles não é preciso criar os ifs;
+  - **Regras:**
+    - **negativo se o this < o**;
+    - **se this == o, return 0**;
+    - **positivo se this > o**.
+- Para ordenar uma lista em um ponto específico do código implementa-se  a **interface** ```Comparable<classe>```;
+  - **Regras:**
+    - **negativo se o o1 < o2**;
+    - **se o1 == o2, return 0**;
+    - **positivo se o1 > o**2.
+- No **.sort()**,cria-se um objeto da classe que implementa o **Comparable**;
+- O **LinkedList**, possui os endereços do elemento anterior e do próximo, já o **ArrayList**, possui apenas do próximo elemento.
+
+### 🔹Iterator
+- Passa por todos os elementos de uma lista, confere se ele existe antes de tomar uma ação.
+- **Ex:**
+  ```
+  Iterator<Manga> mangaIterator = mangas.iterator();  
+  while (mangaIterator.hasNext()){  
+      if (mangaIterator.next().getQuantidade() == 0){  
+          mangaIterator.remove();  
+      }}
+  ```
+- Para simplificar foi criado **.removeIf(variavelReferencia -> regra);
+
+### 🔹Set
+- Nele, os elementos são únicos;
+- Para navegar entre os elementos, é necessário o for;
+- O **HashSet** insere conforme a regra do **hashCode**. Se for necesário manter a ordem de inserção pode-se usar o **LinkedHashSet**.
+
+### 🔹Map
+- Trabalha com chave e valor **K, V**. O tipo da chave é **String**;
+- Não podem ter chaves duplicadas;
+- Para adicionar valores usa-se **.put(chave, valor)**;
+- Se você colocar elementos com a mesma chave o valor é sobrescrito. Para adicionar quando não existe a chave, usa-se **.putIfAbsent()**;
+- Para pegar as chaves, usa-se **.keySet()**;
+- Para pegar os valores, usa-se **.values();
+- Para pegar um valor com base em uma chave, usa-se **.get(chave)**;
+- Para pegar a chave e o valor usa-se **Map.Entry<tipoChave, tipoValor>**;
+  - **Ex:**
+    ```
+        for (Map.Entry<String, String> entry : map.entrySet()) {  
+            System.out.println(entry.getKey() + " - " + entry.getValue());  
+        }
+    ```
+- Para manter os elementos na ordem de inserção, usa-se **LinkedHashMap ao invés de HashMap**.
+
+### 🔹Queue
+- A classe precisa ser um **Comparable**;
+- Para adicionar, usa-se **.add(elemento)**. É dada uma exceção se a fila tiver atingindo o tamanho;
+- Para verificar o primeiro elemento, usa-se **.peek()**;
+- Para verificar e remover e o primeiro elemento, usa-se **.poll()**;
+- Para remover, usa-se **remove()**. Remove o primeiro elemento;
+- Para adicionar, também pode ser usado o **offer(elemento)**. Ele retorna um boolean;
+- Na impressão os elementos podem aparecer fora de ordem, mas eles estão. Quando é utilizado o **.poll()** eles são retirados na ordem.
+
+### 🔹Generics
+- Quando não se sabe o tipo do objeto que será passado é adicionado na assinatura da classe ou do objeto ```<T>```;
+- Para **Métodos Genéricos**, ele deve ser colocado **entre o modificador de acesso e o retorno do método**;
+  - **Ex:** ```private static <T> List<T> criarArrayComUmObjeto(T t) {}```
+
+### 🔹Inner Classes
+- São classes dentro de outras classes;
+- Para declarar um objeto de uma classe interna é necessário criar o objeto da externa;
+  - **Ex:**
+    ```
+        OuterClassesTest01 outerClass = new OuterClassesTest01();  
+        Inner inner = outerClass.new Inner();
+    ```
+- É possível criar classes **dentro de métodos ou blocos de inicialização estáticos**. Elas são chamadas de **Classes Locais**;
+- Para utilizar ela, deve-se instanciá-la no método;
+- Ela pode ser **final ou abstract**;
+- Os **atributos e parâmetros devem ser final**.
+
+#### Classes Anônimas
+- São classes que irão existir por um breve período de tempo e não podem ser reutilizadas em nenhum outro lugar;
+- **Exs:**
+  ```
+  Animal animal = new Animal(){  
+  @Override  
+  public void walk() {  
+      System.out.println("Walking in the shadows");  
+  }};
+  ```
+
+  ```
+  barcoList.sort(new Comparator<Barco>() {  
+      @Override  
+      public int compare(Barco o1, Barco o2) {  
+          return o1.getNome().compareTo(o2.getNome());  
+      }});
+  ```
+
+### 🔹Lambdas
+- Precisam que a **interface que está sendo trabalhada** seja funcional. Ou seja, é uma interface aonde você tem apenas **um método abstrato.** Pode-se ter outros métodos que **não sejam abstratos**, eles precisam ser **default**;
+- A **Lambda tem o parâmetro e o corpo**;
+- O método define o que a **lambda precisa ser**;
+- São **funções, pois não estão atreladas a nenhuma classe**;
+- **Sintaxe: parametro -> expressao**;
+- **Ex:** ```filter(cars, car -> car.getColor().equals("green"));```
+
+### 🔹Method Reference
+- Se a sua lambda chamar apenas um método, ela pode ser utilizada;
+- **Ex:**
+  ```
+  // sem
+  List<String> map = map(strings, s -> s.toUpperCase());
+  
+  // com
+  List<String> map = map(strings, String::toUpperCase);
+  ```
+
+### 🔹Optional
+- É um objeto que encapsula outros objetos;
+- Tenta evitar o NullPointerException;
+- Identifica que o retorno de um método pode ser opcional, retorna um **Optional**;
+- Não é indicado na utilização para passagem de parâmetro, mas ele pode ser passado no tipo de retorno do método;
+- Não é indicado para usar como variável de classe. Pois ele não é serializável;
+- **Exs de criação:**
+  ```
+  Optional<String> o1 = Optional.of("Aha uhu o DevDojo é foda.");  
+  Optional<String> o2 = Optional.ofNullable(null);  
+  Optional<String> o3 = Optional.empty();
+  ```
+- **ofNullable(valor):** coloca o valor se ele não for null, caso seja, fica como **empty()**;
+- **.empty():** coloca o valor como empty.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

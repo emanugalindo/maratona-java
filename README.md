@@ -583,6 +583,13 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
   ```
 - **ofNullable(valor):** coloca o valor se ele não for null, caso seja, fica como **empty()**;
 - **.empty():** coloca o valor como empty.
+
+### 🔹Streams
+- São uma sequência de elementos;
+- **Coleções** trabalham com os **dados em espaço** e **Streams** com **dados no tempo**;
+- As operações em uma Stream podem ser **intermediárias(retornam um Stream) ou finais(retornam uma Coleção)**;
+- Quando você fecha um Stream, você não pode mais trabalhar com ele. Pois, você fechou o fluxo daqueles elementos;
+- Para não fechar uma stream, **basta passar o nome da coleção.stream()**, igual na criação de um. **Ex:**  ```long count2 = lightNovels.stream().distinct().filter(ln -> ln.getPrice() < 4).count();```
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

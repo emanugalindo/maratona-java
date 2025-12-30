@@ -590,6 +590,20 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - As operações em uma Stream podem ser **intermediárias(retornam um Stream) ou finais(retornam uma Coleção)**;
 - Quando você fecha um Stream, você não pode mais trabalhar com ele. Pois, você fechou o fluxo daqueles elementos;
 - Para não fechar uma stream, **basta passar o nome da coleção.stream()**, igual na criação de um. **Ex:**  ```long count2 = lightNovels.stream().distinct().filter(ln -> ln.getPrice() < 4).count();```
+
+### 🔹Threads
+- Podem ser **um objeto ou um processo, linha de execução**;
+- Há dois tipos de thread, **Daemon e User**;
+- O java encerra o programa quando todas as threads do tipo **User são terminadas**. As do tipo **Daemon não tem tanta prioridade**;
+- Todo programa tem uma thread, a que executa um programa no java é a **main**;
+- O **run()** usa a mesma thread, já o **.start()** usa várias threads e não tem uma ordem definida;
+- É recomendado utilizar a **interface Runnable ao invés da classe Thread**;
+- Você não pode dar dois **starts** em uma thread;
+- **Yield** é uma indicação que a thread que está sendo utilizada quer disponibilizar o processador, mas não é garantido;
+- **Join**: junta a **thread que o está execuntado a uma thread específica e finaliza essa thread**;
+- Para mais de uma **thread** não acessar um objeto ao mesmo tempo, usa-se **synchronized** na assinatura do método. Também pode-se colocar diretamente o objeto, para isso ele deve ser **final**;
+- Os métodos de uma classe **thread safe** são **synchronized**. Para utilizar um método dentro de um método de outra classe, ele deve-se ser **synchronized** também;
+- Você só pode chamar o **.wait() e notify()/notifyAll()** se eles estiverem dentro de um bloco sincronizado.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

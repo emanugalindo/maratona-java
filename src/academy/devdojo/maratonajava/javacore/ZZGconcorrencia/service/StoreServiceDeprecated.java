@@ -8,11 +8,6 @@ public class StoreServiceDeprecated {
         return priceGenerator();
     }
 
-    public CompletableFuture<Double> getPricessAsyncCompletableFuture(String storeName) {
-        System.out.printf("Getting prices sync for store %s%n", storeName);
-        return CompletableFuture.supplyAsync(this::priceGenerator);
-    }
-
     private double priceGenerator() {
         System.out.printf("%s generating price %n", Thread.currentThread().getName());
         delay();

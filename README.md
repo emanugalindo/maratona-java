@@ -604,6 +604,12 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - Para mais de uma **thread** não acessar um objeto ao mesmo tempo, usa-se **synchronized** na assinatura do método. Também pode-se colocar diretamente o objeto, para isso ele deve ser **final**;
 - Os métodos de uma classe **thread safe** são **synchronized**. Para utilizar um método dentro de um método de outra classe, ele deve-se ser **synchronized** também;
 - Você só pode chamar o **.wait() e notify()/notifyAll()** se eles estiverem dentro de um bloco sincronizado.
+
+### 🔹Concorrência
+- **AtomicInteger:** usada quando é necessário fazer contagem de forma **atômica**. Faz uma comparação e troca o valor da variável temporária se ele for correto ou não;
+- **Lock:** você tem mais controle, você pode fazer a thread que está a mais esperando ser executada, uma thread pode esperar o lock e pode interromper a thread que está esperando pelo lock;
+- Para leitura, podemos ter mais de um lock, já para escrita apenas um;
+- **Quando for preciso trabalhar com clasess com acesso a múltiplas thread, é recomendado .trabalhar com objetos imutáveis**.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

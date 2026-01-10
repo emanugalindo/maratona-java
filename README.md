@@ -610,6 +610,51 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 - **Lock:** você tem mais controle, você pode fazer a thread que está a mais esperando ser executada, uma thread pode esperar o lock e pode interromper a thread que está esperando pelo lock;
 - Para leitura, podemos ter mais de um lock, já para escrita apenas um;
 - **Quando for preciso trabalhar com clasess com acesso a múltiplas thread, é recomendado .trabalhar com objetos imutáveis**.
+
+### 🔹Padrões de Projeto
+- São padrões que resolvem problemas comuns;
+- **Builder:** é uma forma de organizar a criação de um objeto para que qualquer um consiga ver e entender de forma fácil;
+  - Nele o acesso ao construtor geralmente é privado para forçar a ser utilizado o **Builder**;
+  - **Ex:**
+    ```
+        public static class PersonBuilder {  
+        private String firstName;  
+        private String lastName;  
+        private String username;  
+        private String email;  
+      
+            public PersonBuilder firstName(String firstName){  
+                this.firstName = firstName;
+                return this;  
+            }
+            
+            public Person build(){
+                return new Person(firstName, lastName)
+            }
+        }
+        
+        
+    ```
+  -  Ele retorna o próprio objeto;
+  - **Ex de uso:**
+    ```
+        public class BuilderPatternTest01 {  
+            public static void main(String[] args) {  
+                Person build = new Person.PersonBuilder()  
+                        .firstName("William")  
+                        .lastName("Suane")  
+                        .username("ViradoNoJiraya")  
+                        .email("william.suane@devdojo.academy")  
+                        .build();  
+                System.out.println(build);  
+            }
+        }
+    ```
+- **Factory:**  cria objetos sem especificar a classe exata que será instanciada;
+- **Singleton:** garante que uma classe tenha apenas **uma única instância** e fornecer um ponto de acesso global a ela;
+  - **Eager:** instância criada **no momento do carregamento da classe**;
+  - **Lazy:** instância criada **apenas quando solicitada pela primeira vez**.
+- **Dto:** transporta dados entre camadas ou sistemas, sem lógica de negócio.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).

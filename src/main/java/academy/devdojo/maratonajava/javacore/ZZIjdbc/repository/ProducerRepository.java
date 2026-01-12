@@ -15,7 +15,7 @@ public class ProducerRepository {
         try (Connection conn = ConnectionFactory.getConnection();
              Statement stmt = conn.createStatement()) {
             int rowsAffected = stmt.executeUpdate(sql);
-            log.info("Inserted produce '{}' in the database, rows affected '{}'", producer.getName(), rowsAffected);
+            log.info("Inserted producer '{}' in the database, rows affected '{}'", producer.getName(), rowsAffected);
         } catch (SQLException e) {
             log.error("Error while trying to insert the producer '{}'", producer.getName(), e);
         }
@@ -26,9 +26,21 @@ public class ProducerRepository {
         try (Connection conn = ConnectionFactory.getConnection();
              Statement stmt = conn.createStatement()) {
             int rowsAffected = stmt.executeUpdate(sql);
-            log.info("Delete produce '{}' from the database, rows affected '{}'", id, rowsAffected);
+            log.info("Delete producer '{}' from the database, rows affected '{}'", id, rowsAffected);
         } catch (SQLException e) {
             log.error("Error while trying to delete the producer '{}'", id, e);
+        }
+    }
+
+    public static void update(Producer producer) {
+        String sql = "UPDATE producer SET name = '%s' WHERE (id = %d);"
+                .formatted(producer.getName(), producer.getId());
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement()) {
+            int rowsAffected = stmt.executeUpdate(sql);
+            log.info("Update producer '{}' from the database, rows affected '{}'", producer.getId(), rowsAffected);
+        } catch (SQLException e) {
+            log.error("Error while trying to update producer '{}'", producer.getId(), e);
         }
     }
 }

@@ -49,7 +49,13 @@ public class ProducerRepository {
 
     public static List<Producer> findAll() {
         log.info("Finding all Producers");
-        String sql = "SELECT id, name FROM producer;";
+         return findByName("");
+    }
+
+    public static List<Producer> findByName(String name) {
+        log.info("Finding Producers by name");
+        String sql = "SELECT * FROM producer WHERE name LIKe '%%%s%%';"
+                .formatted(name);
         List<Producer> producers = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
              Statement stmt = conn.createStatement();

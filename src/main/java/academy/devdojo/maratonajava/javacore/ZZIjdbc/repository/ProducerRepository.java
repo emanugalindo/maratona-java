@@ -70,6 +70,32 @@ public class ProducerRepository {
         return producers;
     }
 
+    public static List<Producer> findByNamePreparedStatement(String name) {
+        log.info("Finding Producers by name");
+        String sql = "SELECT * FROM producer WHERE name LIKE ?;";
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPreparedStatement(conn, sql, name);
+             ResultSet rs = ps.executeQuery();) {
+            while (rs.next()) {
+                Producer producer = Producer.builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+                producers.add(producer);
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers", e);
+        }
+        return producers;
+    }
+
+    private static PreparedStatement createPreparedStatement(Connection conn, String sql, String name) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, "%" + name + "%");
+        return ps;
+    }
+
     public static void showProducerMetaData() {
         log.info("Showing Driver Metadata");
         String sql = "SELECT * FROM producer;";

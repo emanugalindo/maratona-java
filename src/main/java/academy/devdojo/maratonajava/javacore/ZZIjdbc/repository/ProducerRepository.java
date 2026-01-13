@@ -148,7 +148,7 @@ public class ProducerRepository {
             log.info("--------------------");
             rs.next();
             log.info("After last row? '{}'", rs.isAfterLast());
-            while (rs.previous()){
+            while (rs.previous()) {
                 log.info(Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
             }
         } catch (SQLException e) {
@@ -166,6 +166,7 @@ public class ProducerRepository {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 rs.updateString("name", rs.getString("name").toUpperCase());
+//                rs.cancelRowUpdates();
                 rs.updateRow();
                 Producer producer = Producer.builder()
                         .id(rs.getInt("id"))
@@ -177,5 +178,51 @@ public class ProducerRepository {
             log.error("Error while trying to find all producers", e);
         }
         return producers;
+    }
+
+    public static List<Producer> findByNameAndInsertWhenNotFound(String name) {
+        log.info("Finding Producers by name and insert if don't find");
+        String sql = "SELECT * FROM producer WHERE name LIKE '%%%s%%';"
+                .formatted(name);
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) return producers;
+
+            insertNewProducer(name, rs);
+            producers.add(getProducer(rs));
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers", e);
+        }
+        return producers;
+    }
+
+    public static void findByNameAndDelete(String name) {
+        log.info("Finding Producers by name and insert if don't find");
+        String sql = "SELECT * FROM producer WHERE name LIKE '%%%s%%';"
+                .formatted(name);
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                log.info("Deleting '{}'", rs.getString("name"));
+                rs.deleteRow();
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers", e);
+        }
+    }
+
+    private static void insertNewProducer(String name, ResultSet rs) throws SQLException {
+        rs.moveToInsertRow();
+        rs.updateString("name", name);
+        rs.insertRow();
+    }
+
+    private static Producer getProducer(ResultSet rs) throws SQLException {
+        rs.beforeFirst();
+        rs.next();
+        return Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build();
     }
 }

@@ -4,10 +4,7 @@ import academy.devdojo.maratonajava.javacore.ZZJcrud.conn.ConnectionFactory;
 import academy.devdojo.maratonajava.javacore.ZZJcrud.dominio.Producer;
 import lombok.extern.log4j.Log4j2;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +50,23 @@ public class ProducerRepository {
         String sql = "DELETE FROM producer WHERE id = ?;";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);
+        return ps;
+    }
+
+    public static void save(Producer producer) {
+        log.info("Saving Producer '{}'", producer);
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPrepareStatementSave(conn, producer)) {
+            ps.execute();
+        } catch (SQLException e) {
+            log.error("Error while trying to save producer '{}'", producer.getName(), e);
+        }
+    }
+
+    private static PreparedStatement createPrepareStatementSave(Connection conn, Producer producer) throws SQLException {
+        String sql = "INSERT INTO producer (name) VALUES (?);";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, producer.getName());
         return ps;
     }
 }

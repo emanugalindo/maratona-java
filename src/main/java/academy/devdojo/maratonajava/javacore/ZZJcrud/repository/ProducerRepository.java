@@ -38,4 +38,21 @@ public class ProducerRepository {
         ps.setString(1, String.format("%%%s%%", name));
         return ps;
     }
+
+    public static void delete(int id) {
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPrepareStatementDelete(conn, id)) {
+            ps.execute();
+            log.info("Delete producer '{}' from the database'{}'", id);
+        } catch (SQLException e) {
+            log.error("Error while trying to delete the producer '{}'", id, e);
+        }
+    }
+
+    private static PreparedStatement createPrepareStatementDelete(Connection conn, Integer id) throws SQLException {
+        String sql = "DELETE FROM producer WHERE id = ?;";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        return ps;
+    }
 }

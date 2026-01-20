@@ -5,8 +5,6 @@ Repositório dedicado aos estudos de Java, seguindo o curso [Maratona Java](http
 
 ---
 
-## 📌 Progresso Atual
-
 ## 📚 Anotações
 ### 🔹 Tipos Primitivos
 - São oito tipos primitivos. Sendo eles:  **int, double, float, char, byte, short, long, boolean**;
@@ -655,6 +653,65 @@ df[6] = DateFormat.getDateInstance(DateFormat.FULL);
   - **Eager:** instância criada **no momento do carregamento da classe**;
   - **Lazy:** instância criada **apenas quando solicitada pela primeira vez**.
 - **Dto:** transporta dados entre camadas ou sistemas, sem lógica de negócio.
+
+### 🔹JDBC
+- É uma biblioteca do Java para padronizar a conexão com diferentes bancos de dados;
+- Para criar uma conexão é necessário passar a **url, o username e a password**;
+- **Ex:**
+  ```
+  public static Connection getConnection() {  
+      String url = "jdbc:tipo_banco://localhost:porta/database";  
+      String username = "user";  
+      String password = "password";  
+      try {  
+          Connection connection = DriverManager.getConnection(url, username, password);  
+          System.out.println(connection);  
+      } catch (SQLException e) {  
+          e.printStackTrace();  
+      }    return null;  
+  }
+  ```
+- Para adicionar um dado ao db, é preciso usar a interface **Statement**;
+  - **Ex:**
+    ```
+    String sql = "INSERT INTO producer (name) VALUES ('%s');".formatted(producer.getName());  
+    try (Connection conn = ConnectionFactory.getConnection();  
+         Statement stmt = conn.createStatement()) {  
+        int rowsAffected = stmt.executeUpdate(sql);  
+        System.out.println(rowsAffected);  
+    } catch (SQLException e) {  
+        e.printStackTrace();  
+    }
+    ```
+- **Lombok:** biblioteca Java que reduz código boilerplate através de anotações processadas em tempo de compilação;
+  - **Ex:**
+    ```
+        import lombok.Builder;  
+    import lombok.Value;  
+      
+    @Value  
+    @Builder  
+    public final class Producer {  
+        private final Integer id;  
+        private final String name;  
+    }
+    ```
+- **Log4j2:** framework de logging rápido e flexível para Java;
+  - **Ex:**
+    ```
+    @Log4j2  
+    public class ProducerRepository {  
+        public static void save(Producer producer) {  
+            String sql = "INSERT INTO producer (name) VALUES ('%s');".formatted(producer.getName());  
+            try (Connection conn = ConnectionFactory.getConnection();  
+                 Statement stmt = conn.createStatement()) {  
+                int rowsAffected = stmt.executeUpdate(sql);  
+                log.info("Inserted produce in the database, rows affected '{}'", rowsAffected);  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }    }}
+    ```
+- **PreparedStatement:** é um Statement com uma performance melhor, pré-compila o seu SQL e protege contra o **SQL Injection**.
 ---
 
 Feito com ❤️ por [Emanuel Galindo](https://github.com/emanugalindo).
